@@ -44,6 +44,7 @@ const Portfolio = ({id, Img}) => {
             }
         ]
     }
+    const [activeTab, setActiveTab] = useState("all")
     const [gallery, setGallery] = useState(Portfoliodata)
     const  ItemFilter = (CategoryCheck) => {
         const CategoryUpdated = Portfoliodata.filter((val) => {
@@ -118,8 +119,8 @@ const Portfolio = ({id, Img}) => {
             <div className='container'>
                 <div>
                     <div className='flex items-center justify-center flex-wrap space-x-5'>
-                        <button className='navbtn' onClick={() => setGallery(Portfoliodata)}>All</button>
-                        <button className='navbtn' onClick={() => ItemFilter('webdesign')}>Web Designing</button>
+                        <button className={`navbtn ${activeTab === "all" ? "text-red-500":""}`} onClick={() => { setActiveTab("all"); setGallery(Portfoliodata)}}>All</button>
+                        <button className={`navbtn ${activeTab === "webdesign" ? "text-red-500":""}`} onClick={() => {setActiveTab("webdesign");ItemFilter('webdesign')}}>Web Designing</button>
                         <button className='navbtn' onClick={() => ItemFilter('graphicdesign')}>Graphic Design</button>
                         <button className='navbtn'>Web Designing</button>
                     </div>
